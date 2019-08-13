@@ -1,8 +1,8 @@
-const {Board, ESC, Fn, Led, Servo} = require('johnny-five');
+const { Board, ESC, Fn, Led, Servo } = require('johnny-five');
 const keypress = require('keypress');
 
 const board = new Board({
-  port: '', // path to bluetooth connection, i.e. /dev/tty.ROBOT_NAME-SPPDev or COMX
+  port: '/dev/tty.plankton-DevB', // path to bluetooth connection, i.e. /dev/tty.ROBOT_NAME-SPPDev or COMX
 });
 
 board.on('ready', () => {
@@ -11,7 +11,7 @@ board.on('ready', () => {
     device: 'FORWARD_REVERSE',
     pin: 11,
   });
-  const servo = new five.Servo(10);
+  const servo = new Servo(10);
   let speed = 0;
   let last = null;
 

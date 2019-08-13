@@ -2,7 +2,7 @@ const {Board, ESC, Fn, Led} = require('johnny-five');
 const keypress = require('keypress');
 
 const board = new Board({
-  port: '', // path to bluetooth connection, i.e. /dev/tty.ROBOT_NAME-SPPDev or COMX
+  port: '/dev/tty.plankton-DevB', // path to bluetooth connection, i.e. /dev/tty.ROBOT_NAME-SPPDev or COMX
 });
 
 board.on('ready', () => {
@@ -27,9 +27,11 @@ board.on('ready', () => {
       } else {
         if (key.name === 'up' || key.name === 'down') {
           if (last !== key.name) {
+            console.log(speed);
             change = esc.neutral;
             speed = 0;
           } else {
+            console.log(speed);
             speed += 1;
 
             change =
